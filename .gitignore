@@ -87,3 +87,4 @@ config/*
 !config/default.json
 !config/default.js
 .env
+!example.env
