@@ -1,6 +1,6 @@
 {
   "sourceMaps": true,
-  "plugins": ["react-require", "add-module-exports"],
+  "plugins": ["react-require", "add-module-exports", "transform-function-bind"],
   "presets": [
     ["env", {
       "targets": {

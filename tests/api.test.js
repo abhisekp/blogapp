@@ -13,11 +13,21 @@ const getUrl = pathname => url.format({
 });
 
 beforeAll((done) => {
-  server = api.listen(port, done);
+  api
+    .get('mongooseClient')
+    .connection.dropDatabase()
+    .then(() => {
+      server = api.listen(port, done);
+    });
 });
 
 afterAll((done) => {
-  server.close(done);
+  api
+    .get('mongooseClient')
+    .connection.dropDatabase()
+    .then(() => {
+      server.close(done);
+    });
 });
 
 describe('Feathers application tests', () => {
