@@ -26,7 +26,7 @@ module.exports = {
     },
     local: {
       entity: 'user',
-      usernameField: 'email',
+      usernameField: 'username',
       passwordField: 'password',
     },
   },

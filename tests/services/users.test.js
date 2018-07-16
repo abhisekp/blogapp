@@ -1,9 +1,38 @@
+import ms from 'ms';
 import api from '../../src/api';
 
 describe("'users' service", () => {
-  test('registered the service', () => {
-    const service = api.service('users');
+  const userService = api.service('users');
 
-    expect(service).toBeTruthy();
+  it('should register the service', () => {
+    expect(userService).toBeTruthy();
   });
+
+  it(
+    'should create a new user',
+    async () => {
+      const params = {
+        provider: 'rest',
+      };
+      const actual = await userService.create(
+        {
+          username: 'abhisekp',
+          password: '123456',
+        },
+        params,
+      );
+
+      const expected = {
+        username: 'abhisekp',
+      };
+
+      expect(actual).toMatchObject(expected);
+      expect(actual).toEqual(
+        expect.not.objectContaining({
+          password: expect.anything(),
+        }),
+      );
+    },
+    ms('10s'),
+  );
 });

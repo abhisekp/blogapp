@@ -1,3 +1,4 @@
+import ms from 'ms';
 import fetch from 'node-fetch';
 import url from 'url';
 import api from '../src/api/api';
@@ -5,21 +6,20 @@ import api from '../src/api/api';
 const port = api.get('port');
 let server;
 
-const getUrl = pathname => url.format({
+const getUrl = async pathname => url.format({
   hostname: api.get('host') || 'localhost',
   protocol: 'http',
-  port: api.get('port'),
+  port: await port,
   pathname,
 });
 
-beforeAll((done) => {
-  api
-    .get('mongooseClient')
-    .connection.dropDatabase()
-    .then(() => {
-      server = api.listen(port, done);
-    });
-});
+// @TODO fix the server listen error. Check jest test
+beforeAll(
+  () => new Promise(async (resolve, reject) => {
+    server = api.listen(await port, err => (err ? reject(err) : resolve(server)));
+  }),
+  ms('10s'),
+);
 
 afterAll((done) => {
   api
@@ -33,6 +33,6 @@ afterAll((done) => {
 describe('Feathers application tests', () => {
   test('Default route does not exist', async () => {
     const actual = await (await fetch(getUrl('/'))).json();
-    expect(actual).toMatchSnapshot();
+    expect(actual).toMatchSnapshot('No Default Route Error');
   });
 });

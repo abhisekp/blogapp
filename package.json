@@ -22,16 +22,12 @@
     "yarn": ">= 0.18.0"
   },
   "scripts": {
-    "test": "jest tests/app.test.js",
+    "test": "jest",
     "eslint:fix": "prettier-eslint --write src/**/*.js test/**/*.js pages/**/*.js",
     "start": "node src/",
     "forever": "forever logs -c 'nodemon --exitcrash' forever/development.json",
     "nodemon": "nodemon src/",
     "dev": "run-s nodemon"
-  },
-  "jest": {
-    "verbose": true,
-    "notify": true
   },
   "dependencies": {
     "@feathersjs/authentication": "^2.1.7",
@@ -44,13 +40,17 @@
     "@feathersjs/socketio": "^3.2.2",
     "catchify": "^2.6.1",
     "compression": "^1.7.2",
+    "config": "^1.30.0",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "esm": "^3.0.71",
     "express-react-views": "^0.10.5",
     "feathers-mongoose": "^6.1.2",
+    "get-port": "^3.2.0",
     "helmet": "^3.12.1",
+    "lodash": "^4.17.10",
     "mongoose": "^5.2.3",
+    "ms": "^2.1.1",
     "next": "^6.1.1",
     "node-fetch": "^2.1.2",
     "npm-run-all": "^4.1.3",
