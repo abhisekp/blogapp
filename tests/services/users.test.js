@@ -1,4 +1,3 @@
-import ms from 'ms';
 import api from '../../src/api';
 
 describe("'users' service", () => {
@@ -33,6 +32,5 @@ describe("'users' service", () => {
         }),
       );
     },
-    ms('10s'),
   );
 });

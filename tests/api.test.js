@@ -1,25 +1,21 @@
-import ms from 'ms';
 import fetch from 'node-fetch';
 import url from 'url';
 import api from '../src/api/api';
 
 const port = api.get('port');
+console.log('Port', port);
 let server;
 
-const getUrl = async pathname => url.format({
+const getUrl = pathname => url.format({
   hostname: api.get('host') || 'localhost',
   protocol: 'http',
-  port: await port,
+  port,
   pathname,
 });
 
-// @TODO fix the server listen error. Check jest test
-beforeAll(
-  () => new Promise(async (resolve, reject) => {
-    server = api.listen(await port, err => (err ? reject(err) : resolve(server)));
-  }),
-  ms('10s'),
-);
+beforeAll((done) => {
+  server = api.listen(port, done);
+});
 
 afterAll((done) => {
   api
@@ -33,6 +29,6 @@ afterAll((done) => {
 describe('Feathers application tests', () => {
   test('Default route does not exist', async () => {
     const actual = await (await fetch(getUrl('/'))).json();
-    expect(actual).toMatchSnapshot('No Default Route Error');
+    expect(actual).toMatchSnapshot();
   });
 });
