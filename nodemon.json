@@ -1,0 +1,7 @@
+{
+  "ignore": ["**/.next/**/*", "**/pages/**/*"],
+  "watch": ["./config", "./src"],
+  "verbose": true,
+  "exec": "node -r esm -r source-map-support/register",
+  "delay": "2500"
+}

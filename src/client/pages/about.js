@@ -1,0 +1,1 @@
+export default ({ name = 'Me'}) => <div>About {name}</div>
