@@ -18,12 +18,12 @@
     "test": "test/"
   },
   "engines": {
-    "node": "^10.0.0",
+    "node": ">= 6.11.0",
     "yarn": ">= 0.18.0"
   },
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --runInBand --watch",
     "eslint:fix": "prettier-eslint --write src/**/*.js test/**/*.js pages/**/*.js",
     "start": "node src/",
     "forever": "forever start -c 'nodemon --exitcrash' forever/development.json",
@@ -43,6 +43,7 @@
     "compression": "^1.7.2",
     "config": "^1.30.0",
     "cors": "^2.8.4",
+    "delay": "^3.0.0",
     "dotenv": "^6.0.0",
     "esm": "^3.0.71",
     "express-react-views": "^0.10.5",

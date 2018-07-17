@@ -2,11 +2,11 @@
   "sourceMaps": true,
   "plugins": ["react-require", "add-module-exports", "transform-function-bind"],
   "presets": [
+    "next/babel",
     ["env", {
       "targets": {
         "node": "current"
       }
-    }],
-    "next/babel"
+    }]
   ]
 }
