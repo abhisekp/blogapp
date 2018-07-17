@@ -1,10 +1,12 @@
 import { hooks as authHooks } from '@feathersjs/authentication';
 
-const { authenticate } = authHooks;
+// const { authenticate } = authHooks;
 
 export default {
   before: {
-    all: [authenticate('jwt')],
+    all: [
+      /* authenticate('jwt') */
+    ],
     find: [],
     get: [],
     create: [],

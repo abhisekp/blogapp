@@ -1,5 +1,5 @@
 
-# Created by https://www.gitignore.io/api/node
+# Created by https://www.gitignore.io/api/node,git
 
 ### Node ###
 # Logs
@@ -76,6 +76,8 @@ typings/
 # Serverless directories
 .serverless
 
+### Git ###
+*.orig
 
 # End of https://www.gitignore.io/api/node
 
@@ -86,5 +88,7 @@ forever/
 config/*
 !config/default.json
 !config/default.js
+!config/test.js
+!config/test.json
 .env
 !example.env

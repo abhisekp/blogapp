@@ -23,9 +23,10 @@
   },
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "eslint:fix": "prettier-eslint --write src/**/*.js test/**/*.js pages/**/*.js",
     "start": "node src/",
-    "forever": "forever logs -c 'nodemon --exitcrash' forever/development.json",
+    "forever": "forever start -c 'nodemon --exitcrash' forever/development.json",
     "nodemon": "nodemon src/",
     "dev": "run-s nodemon"
   },
@@ -45,6 +46,7 @@
     "dotenv": "^6.0.0",
     "esm": "^3.0.71",
     "express-react-views": "^0.10.5",
+    "feathers-hooks-common": "^4.14.3",
     "feathers-mongoose": "^6.1.2",
     "get-port": "^3.2.0",
     "helmet": "^3.12.1",
