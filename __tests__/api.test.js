@@ -16,21 +16,12 @@ const getUrl = pathname => url.format({
 });
 
 beforeAll(async () => {
-  await api.get('mongooseClient').connection.dropDatabase();
   await new Promise((resolve) => {
     server = api.listen(port, resolve);
   });
-  /*
-  const params = {
-    provider: 'rest'
-  }
-
-  await api.service('users').create(userData, params); */
 });
 
 afterAll(async () => {
-  await api.get('mongooseClient').connection.dropDatabase();
-
   await new Promise(resolve => server.close(resolve));
 });
 

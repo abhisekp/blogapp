@@ -1,8 +1,18 @@
+import { uniqueId } from 'lodash/fp';
 import api from '../../src/api';
-import userData from '../__fixtures__/user';
 
 describe("'users' service", () => {
   const userService = api.service('users');
+
+  let user = {
+    _id: null,
+    username: uniqueId('abhisekp'),
+  };
+
+  afterAll(async () => {
+    // eslint-disable-next-line no-underscore-dangle
+    await userService.remove(user._id);
+  });
 
   it('should register the service', () => {
     expect(userService).toBeTruthy();
@@ -12,10 +22,17 @@ describe("'users' service", () => {
     const params = {
       provider: 'rest',
     };
-    const actual = await userService.create(userData, params);
+    const actual = await userService.create(
+      {
+        username: user.username,
+      },
+      params,
+    );
+
+    user = actual;
 
     const expected = {
-      username: userData.username,
+      username: user.username,
     };
 
     expect(actual).toMatchObject(expected);
