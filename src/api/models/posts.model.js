@@ -1,15 +1,14 @@
-// posts-model.js - A mongoose model
-// 
-// See http://mongoosejs.com/docs/models.html
-// for more of what you can do here.
-module.exports = function (app) {
+export default (app) => {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
-  const posts = new Schema({
-    text: { type: String, required: true }
-  }, {
-    timestamps: true
-  });
+  const posts = new Schema(
+    {
+      text: { type: String, required: true },
+    },
+    {
+      timestamps: true,
+    },
+  );
 
   return mongooseClient.model('posts', posts);
 };

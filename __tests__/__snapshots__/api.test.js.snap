@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Feathers application tests Default route does not exist 1`] = `
+exports[`Feathers application tests should have no default route 1`] = `
 Object {
   "className": "not-found",
   "code": 404,
